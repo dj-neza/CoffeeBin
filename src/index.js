@@ -1,49 +1,30 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import Cup from './profile.js';
 import './index.css';
-
-class Child extends React.Component {
-
-  render() {
-    return (
-      <div>
-       {this.props.randomProp}
-      </div>
-    );
-  }
-}
-
-class Parent extends React.Component {
-
-  constructor(props) {
-    super(props);
-    this.state = {
-      randomState: "hahahaha",
-    }
-  }
-
-  settingState(random) {
-    this.setState({
-      randomState: random, 
-    })
-  }
-
-  render() {
-
-    // you can add some random stuff 
-
-    return (
-      <div className="">
-        <Child randomProp={this.state.randomState} />
-      </div>
-    );
-  }
-}
-
-// ========================================
+import { Route } from "react-router-dom";
+import Container from "react-bootstrap/Container";
+import Order from order.js;
+import Achievement from achievements.js;
+import Create from create.js;
 
 ReactDOM.render(
-  <Parent />,
+  <Container fluid={"true"}>
+        <Header title={this.state.title}/>
+
+        <Route exact path="/" component={Cup} />
+        <Route
+            path="/order"
+            render={() => <Order />}
+        />
+        <Route
+            path="/achievements"
+            render={() => <Achievement />}
+        />
+        <Route
+            path="/create"
+            render={() => <Create />}
+        />
+    </Container>
   document.getElementById('root')
 );
-

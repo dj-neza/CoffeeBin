@@ -1,4 +1,35 @@
 body {
   font: 14px "Century Gothic", Futura, sans-serif;
-  margin: 20px;
+}
+
+.movie-cover {
+	position: relative;
+	align-content: center;
+	width: 250;
+	height: 300;
+	margin: 50px;
+	margin-top: 70px;
+}
+.movie-cover img {
+	position:absolute;
+	top:0;
+	left:0;
+}
+.titleBanner {
+	background-color: purple;
+	color: white;
+	font-size: 18px;
+	padding: 20px;
+	width: 100%;
+	position: fixed;
+  	left: 0;
+  	top: 0;
+  	z-index: 10;
+}
+.align {
+	align-content: center;
+}
+.mar_side {
+	margin-left: 12px;
+	margin-right: 12px;
 }

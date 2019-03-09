@@ -1,91 +1,56 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
+import bean1 from './img/bean1.png';
+import bean2 from './img/bean2.png';
+import bean3 from './img/bean3.png';
+import bean4 from './img/bean4.png';
+import bean5 from './img/bean5.png';
+import bean6 from './img/bean6.png';
+import bean7 from './img/bean7.png';
+import bean8 from './img/bean8.png';
+import cup from './img/cup.png';
+import Header from './header.js';
+import Bottom from './bottom.js';
 
 class Cup extends React.Component {
 
   constructor(props) {
     super(props);
     this.state = {
-    	particle_count: 20,
-    	x: new Float32Array(this.state.particle_count), // x location
-	    y: new Float32Array(this.state.particle_count), // y location
-	    oldX: new Float32Array(this.state.particle_count), // previous x location
-	    oldY: new Float32Array(this.state.particle_count), // previous y location
-	    vx: new Float32Array(this.state.particle_count), // horizontal velocity
-	    vy: new Float32Array(this.state.particle_count), // vertical velocity
-	    p: new Float32Array(this.state.particle_count), // pressure
-	    pNear: new Float32Array(this.state.particle_count), // pressure near
-	    g: new Float32Array(this.state.particle_count), // 'nearness' to neighbour
-	    mesh: [] // Three.js mesh for rendering
+    	count: 49,
     }
-  }
-
-  moveParticles() {
-  	const dt = 0.0166;
-
-  	for (let i = 0; i < this.state.particle_count; i++) {
-
-	    // Update old position
-	    state.oldX[i] = this.state.x[i];
-	    state.oldY[i] = this.state.y[i];
-	    const force = GRAVITY;
-	    state.vx[i] += force[0] * dt;
-	    state.vy[i] += force[1] * dt;
-
-	    // Update positions
-	    state.x[i] += this.state.vx[i] * dt;
-	    state.y[i] += this.state.vy[i] * dt;
-
-	    // Update hashmap
-	    const gridX = (state.x[i] / canvasRect.w + 0.5) * GRID_CELLS;
-	    const gridY = (state.y[i] / canvasRect.h + 0.5) * GRID_CELLS;
-	    hashMap.add(gridX, gridY, i);
-
-	} 
-
-	const getNeighboursWithGradients = i => {
-  
-	    const gridX = (state.x[i] / canvasRect.w + 0.5) * GRID_CELLS;
-	    const gridY = (state.y[i] / canvasRect.h + 0.5) * GRID_CELLS;
-	    const radius = (INTERACTION_RADIUS / canvasRect.w) * GRID_CELLS;
-
-	    const results = hashMap.query(gridX, gridY, radius);
-	    const neighbours = [];
-
-	    for (let k = 0; k < results.length; k++) {
-
-	        const n = results[k];
-	        if (i === n) continue; // Skip itself
-
-	        const g = gradient(i, n);
-	        if (g === 0) continue
-
-	        state.g[n] = g; // Store the gradient
-	        neighbours.push(n); // Push the neighbour to neighbours
-
-	    }
-
-	    return neighbours;
-
-	};
-
-	for (let i = 0; i < this.state.particle_count; i++) {
-
-	    const neighbours = getNeighboursWithGradients(i);
-	    updateDensities(i, neighbours);
-
-	    // perform double density relaxation
-	    relax(i, neighbours, dt);
-
-	} 
   }
 
   render() {
 
+  	let beanList = [];
+  	let left = 55;
+  	let top = 247;
+  	let row = 0;
+  	for (let i = 0; i < this.state.count; i++) { 
+	  beanList.push(<Bean key={i} topPx={top} leftPx={left} />);
+	  left += 25; 
+	  if (left > 158+(2*row)) {
+	  	left = Math.floor(Math.random() * (3+(row*2))) + 55-(row*2);
+	  	top -= 20;
+	  	row++;
+	  	if (top < 75) {
+	  		//full cup
+	  		break;
+	  	}
+	  }
+	}
+
     return (
-      <div className="">
-      </div>
+	  <React.Fragment>
+		  <Header title="MY SAVER CUP" />
+	      <div className="movie-cover">
+	      	<img src={cup} alt="cup" />
+	      	{beanList}
+	      </div>
+	      <Bottom />
+      </React.Fragment>
     );
   }
 }
@@ -96,13 +61,19 @@ class Bean extends React.Component {
 	    super(props);
 	    this.state = {
 	    }
-	  }
+	}
 
-	  render() {
+	randomBean() {
+		const beans = [bean1, bean2, bean3, bean4, bean5, bean6, bean7, bean8];
+		return beans[Math.floor(Math.random() * 8)];  
+	}
+
+	render() {
 
 	    return (
-	      <div className="">
-	      </div>
+	      <img src={this.randomBean()} alt="bean" width="40" height="32" style={{"top" : this.props.topPx, "left" : this.props.leftPx}} />
 	    );
-	  }
+	}
 }
+
+export default Cup;
