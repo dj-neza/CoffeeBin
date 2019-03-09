@@ -1,5 +1,7 @@
 import React from 'react';
 import {Map, InfoWindow, Marker,GoogleApiWrapper} from 'google-maps-react';
+import Header from './header.js';
+import Bottom from './bottom.js';
 
 const style = {
   width: '100%',
@@ -10,21 +12,25 @@ const style = {
 export class MapContainer extends React.Component {
   render() {
     return (
-      <Map google={this.props.google} 
-      style={style}
-      initialCenter={{
-            lat: 47.422054, 
-            lng:9.3680597
-          }}
-          zoom={15}
-          onClick={this.onMapClicked}
-          >
- 
-        <Marker onClick={this.onMarkerClick}
-                name={'Current location'} />
- 
-        
-      </Map>
+    	<React.Fragment>
+    	  <Header title="MAP" />
+	      <Map google={this.props.google} 
+	      style={style}
+	      initialCenter={{
+	            lat: 47.422054, 
+	            lng:9.3680597
+	          }}
+	          zoom={15}
+	          onClick={this.onMapClicked}
+	          >
+	 
+	        <Marker onClick={this.onMarkerClick}
+	                name={'Current location'} />
+	 
+	        
+	      </Map>
+	      <Bottom />
+	    </React.Fragment>
     );
   }
 }

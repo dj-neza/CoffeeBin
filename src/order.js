@@ -1,34 +1,10 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import Header from './header.js';
-import Bottom from './bottom.js';
-
-class Order extends React.Component {
-
-	constructor(props) {
-	    super(props);
-	    this.state = {
-	    }
-	}
-
-	render() {
-
-	    return (
-	    	<React.Fragment>
-		    	<Header title="Order" />
-		    	<Bottom />
-		    <React.Fragment>
-	    );
-	}
-}
-
-export default Order;
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import TimePicker from 'react-time-picker';
 import { CardGroup, Card, CardTitle, CardText } from 'reactstrap';
 import {Button, Dropdown, DropdownButton, DropdownToggle} from 'react-bootstrap';
+import Header from './header.js';
+import Bottom from './bottom.js';
 
 class TimePickerComponent extends React.Component {
 
@@ -65,7 +41,7 @@ class TimePickerComponent extends React.Component {
   }
 }
 
-export default class Order extends React.Component {
+class Order extends React.Component {
 
   state = { checked: false }
 
@@ -84,41 +60,42 @@ export default class Order extends React.Component {
   render() {
     return (
       <div>
+      <Header title="ORDER"/>
       <CardGroup>
 
       <CardTitle>
       Choose a coffee house:
       </CardTitle>
       <Card>
-      <Dropdown>
-  <Dropdown.Toggle variant="success" id="dropdown-basic">
-    Choose coffee house
-  </Dropdown.Toggle>
+	      <Dropdown>
+			  <Dropdown.Toggle variant="success" id="dropdown-basic">
+			    Choose coffee house
+			  </Dropdown.Toggle>
 
-  <Dropdown.Menu>
-    <Dropdown.Item href="#/action-1">Coffee house 1</Dropdown.Item>
-    <Dropdown.Item href="#/action-2">Coffee house 2</Dropdown.Item>
-    <Dropdown.Item href="#/action-3">Coffee house 3</Dropdown.Item>
-    <Dropdown.Item href="#/action-3">Coffee house 4</Dropdown.Item>
-  </Dropdown.Menu>
-</Dropdown>
-      </Card>
+			  <Dropdown.Menu>
+			    <Dropdown.Item href="#/action-1">Coffee house 1</Dropdown.Item>
+			    <Dropdown.Item href="#/action-2">Coffee house 2</Dropdown.Item>
+			    <Dropdown.Item href="#/action-3">Coffee house 3</Dropdown.Item>
+			    <Dropdown.Item href="#/action-3">Coffee house 4</Dropdown.Item>
+			  </Dropdown.Menu>
+			</Dropdown>
+			      </Card>
 
-      <CardTitle>
-      Choose your order:
-      </CardTitle>
-      <Card>
-      <Dropdown>
-  <Dropdown.Toggle variant="success" id="dropdown-basic">Choose coffee
-  </Dropdown.Toggle>
+			      <CardTitle>
+			      Choose your order:
+			      </CardTitle>
+			      <Card>
+			      <Dropdown>
+			  <Dropdown.Toggle variant="success" id="dropdown-basic">Choose coffee
+			  </Dropdown.Toggle>
 
-  <Dropdown.Menu>
-    <Dropdown.Item href="#/action-1">Black coffee</Dropdown.Item>
-    <Dropdown.Item href="#/action-2">Coffee with milk</Dropdown.Item>
-    <Dropdown.Item href="#/action-3">Cappuchino</Dropdown.Item>
-    <Dropdown.Item href="#/action-3">Coffee Latte</Dropdown.Item>
-  </Dropdown.Menu>
-</Dropdown>
+			  <Dropdown.Menu>
+			    <Dropdown.Item href="#/action-1">Black coffee</Dropdown.Item>
+			    <Dropdown.Item href="#/action-2">Coffee with milk</Dropdown.Item>
+			    <Dropdown.Item href="#/action-3">Cappuchino</Dropdown.Item>
+			    <Dropdown.Item href="#/action-3">Coffee Latte</Dropdown.Item>
+			  </Dropdown.Menu>
+			</Dropdown>
       </Card>
 
       <CardTitle>
@@ -152,7 +129,11 @@ export default class Order extends React.Component {
       <Button color="info" onClick={this.onClickMap.bind(this)}>GO TO COFFEE MAP</Button>{' '}
       </Card>
       </CardGroup>
+      <Bottom />
       </div>
     );
   }
 }
+
+
+export default Order;

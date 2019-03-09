@@ -18,7 +18,7 @@ class Create extends React.Component {
       	<React.Fragment>
             <Header title="CreateCup" />
             <Bottom />
-        <React.Fragment>
+        </React.Fragment>
 
       );
     }

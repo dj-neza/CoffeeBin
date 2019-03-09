@@ -18,7 +18,7 @@ class Achievement extends React.Component {
 	    	<React.Fragment>
 		    	<Header title="AchievementsAndPeople" />
 		    	<Bottom />
-		    <React.Fragment>
+		    </React.Fragment>
 	    );
 	}
 }

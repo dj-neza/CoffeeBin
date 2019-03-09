@@ -5,8 +5,6 @@
   "dependencies": {
     "bootstrap": "^4.3.1",
     "dompurify": "^1.0.10",
-    "react-icons": "^2.2.7",
-    "react-router-dom": "^4.3.1",
     "google-map-react": "^1.1.2",
     "google-maps-react": "^2.0.2",
     "react": "^16.8.1",
@@ -14,6 +12,8 @@
     "react-calendar-heatmap": "^1.8.0",
     "react-dom": "^16.8.1",
     "react-google-maps": "^9.4.5",
+    "react-icons": "^2.2.7",
+    "react-router-dom": "^4.3.1",
     "react-scripts": "^2.1.8",
     "react-time-picker": "^3.3.0",
     "reactstrap": "^7.1.0",
