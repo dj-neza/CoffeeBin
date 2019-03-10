@@ -19,7 +19,7 @@ class Create extends React.Component {
       return (
       	<React.Fragment>
           <Header title="CreateCup" />
-          <div style={{marginTop:"10%"}}>
+          <div style={{marginTop:"70px"}}>
               <div class="col-centered">
                 <h3  style={{marginLeft:"2%"}}>Create your own REUSABLE CUP!</h3>
                 <div style={{marginLeft:"7%"}}>
