@@ -17,6 +17,8 @@ import { confirmAlert } from 'react-confirm-alert'; // Import
 import 'react-confirm-alert/src/react-confirm-alert.css' // Import css
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import Heatmap from './heatmap.js';
+import Chart from './chart.js';
 
 class Cup extends React.Component {
 
@@ -74,10 +76,19 @@ class Cup extends React.Component {
 	      	<img src={cup} alt="cup" />
 	      	{beanList}
 	      </div>
+	      < br/>
+
+	      <div style={{marginLeft:"10%", marginTop:"50%"}}>
+	      <h3 >Number of reusable cups used per day:</h3> 
+	      <Heatmap />
+	      
+	      <h3 style={{marginTop:"7%"}}> Your sustainability index: </h3>
+	      </div>
+	      <Chart />
 	      <Bottom />
 	      { this.state.dropOffNotification ? this.notify() : null }
 	      <ToastContainer />
-
+	      
       </React.Fragment>
 
     );
