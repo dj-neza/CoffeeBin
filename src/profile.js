@@ -19,6 +19,15 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Heatmap from './heatmap.js';
 import Chart from './chart.js';
+const ColoredLine = ({ color }) => (
+    <hr
+        style={{
+            color: color,
+            backgroundColor: color,
+            height: 1
+        }}
+    />
+);
 
 class Cup extends React.Component {
 
@@ -76,13 +85,18 @@ class Cup extends React.Component {
 	      	<img src={cup} alt="cup" />
 	      	{beanList}
 	      </div>
-	      < br/>
+			<p>5 beans until FREE COFFEE</p>
 
-	      <div style={{marginLeft:"10%", marginTop:"50%"}}>
-	      <h3 >Number of reusable cups used per day:</h3> 
+	      <div style={{ marginTop:"90%"}}>
+	      <ColoredLine color="lightgrey" />
+	      <p> Stats about ur sustainability</p>
+	      </div>
+	      <ColoredLine color="lightgrey" />
+	      <div style={{marginLeft:"10%"}}>
+	      <p >Number of reusable cups used per day:</p> 
 	      <Heatmap />
 	      
-	      <h3 style={{marginTop:"7%"}}> Your sustainability index: </h3>
+	      <p style={{marginTop:"7%"}}> Your sustainability index: </p>
 	      </div>
 	      <Chart />
 	      <Bottom />
