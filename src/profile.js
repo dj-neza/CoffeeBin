@@ -12,6 +12,22 @@ import bean8 from './img/bean8.png';
 import cup from './img/cup.png';
 import Header from './header.js';
 import Bottom from './bottom.js';
+import io from 'socket.io-client';
+import { confirmAlert } from 'react-confirm-alert'; // Import
+import 'react-confirm-alert/src/react-confirm-alert.css' // Import css
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import Heatmap from './heatmap.js';
+import Chart from './chart.js';
+const ColoredLine = ({ color }) => (
+    <hr
+        style={{
+            color: color,
+            backgroundColor: color,
+            height: 1
+        }}
+    />
+);
 
 class Cup extends React.Component {
 
@@ -19,8 +35,28 @@ class Cup extends React.Component {
     super(props);
     this.state = {
     	count: 49,
+    	dropOffNotification: false,
     }
   }
+
+  componentDidMount() {
+  	// connect to webSocket API
+	const socket = io('https://coffeebin.appspot.com');
+	window.socketConnection = socket;
+	socket.on('cupDropoffReceipt', data => { console.log("LEL"); this.setState({dropOffNotification: true }); console.log(this.state.dropOffNotification) });
+	//socket.on('cup dropoff', timestamp => { console.log("LEL"); this.sendNotification(null, timestamp)})
+  }
+
+  notify() {
+  	toast("You have succesfully dropped off your cup.");
+  	this.setState({dropOffNotification:false});
+  	console.log(this.state.dropOffNotification);
+  }
+
+  notifyBestFriend() {
+  	toast("Your friend is close to you. Go grab a coffee with her!");
+  }
+ 
 
   render() {
 
@@ -49,8 +85,26 @@ class Cup extends React.Component {
 	      	<img src={cup} alt="cup" />
 	      	{beanList}
 	      </div>
+			<p>5 beans until FREE COFFEE</p>
+
+	      <div style={{ marginTop:"90%"}}>
+	      <ColoredLine color="lightgrey" />
+	      <p> Stats about ur sustainability</p>
+	      </div>
+	      <ColoredLine color="lightgrey" />
+	      <div style={{marginLeft:"10%"}}>
+	      <p >Number of reusable cups used per day:</p> 
+	      <Heatmap />
+	      
+	      <p style={{marginTop:"7%"}}> Your sustainability index: </p>
+	      </div>
+	      <Chart />
 	      <Bottom />
+	      { this.state.dropOffNotification ? this.notify() : null }
+	      <ToastContainer />
+	      
       </React.Fragment>
+
     );
   }
 }
