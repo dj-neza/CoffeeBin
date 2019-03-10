@@ -7,17 +7,25 @@ import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 
+import bird from './img/bird.png';
+import social from './img/social.png';
+import small from './img/s.png';
+import medium from './img/m.png';
+import large from './img/l.png';
+import travel from './img/travel.png';
+
 class Achievement extends React.Component {
 
 	constructor(props) {
 	    super(props);
 	    this.state = {
 	    	achievements: [
-	    		{name: "Coffee Newbie", img: "https://static.independent.co.uk/s3fs-public/thumbnails/image/2018/04/15/16/china-coffee-cup.jpg?w968h681"},
-	    		{name: "Coffee Lover", img: "https://static.independent.co.uk/s3fs-public/thumbnails/image/2018/04/15/16/china-coffee-cup.jpg?w968h681"},
-	    		{name: "Coffee Giver", img: "https://static.independent.co.uk/s3fs-public/thumbnails/image/2018/04/15/16/china-coffee-cup.jpg?w968h681"},
-	    		{name: "Coffee Traveller", img: "https://static.independent.co.uk/s3fs-public/thumbnails/image/2018/04/15/16/china-coffee-cup.jpg?w968h681"},
-	    		{name: "Early Bird", img: "https://static.independent.co.uk/s3fs-public/thumbnails/image/2018/04/15/16/china-coffee-cup.jpg?w968h681"}
+	    		{name: "Coffee Newbie", img: small},
+	    		{name: "Coffee Lover", img: medium},
+	    		{name: "Coffee Addict", img: large},
+	    		{name: "Coffee Giver", img: social},
+	    		{name: "Early Bird", img: bird},
+	    		{name: "Coffee Traveller", img: travel}
 	    	],
 	    	score: 512, 
 	    	friendsScores: [
@@ -86,7 +94,7 @@ class Achieve extends React.Component {
 
 	    return (
 	    	<React.Fragment>
-	    		<Col xs={4} className="media_box" >
+	    		<Col xs={4} className="media_box border">
                     <div className="box">
                         <div className="content">
                             <img

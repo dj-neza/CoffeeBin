@@ -76,3 +76,6 @@ body {
     /* bg color = bg color under block */
     background: white;
 }
+.border {
+	border: 1px solid black;
+}
