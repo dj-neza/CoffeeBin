@@ -12,6 +12,11 @@ import bean8 from './img/bean8.png';
 import cup from './img/cup.png';
 import Header from './header.js';
 import Bottom from './bottom.js';
+import io from 'socket.io-client';
+import { confirmAlert } from 'react-confirm-alert'; // Import
+import 'react-confirm-alert/src/react-confirm-alert.css' // Import css
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 class Cup extends React.Component {
 
@@ -19,8 +24,28 @@ class Cup extends React.Component {
     super(props);
     this.state = {
     	count: 49,
+    	dropOffNotification: false,
     }
   }
+
+  componentDidMount() {
+  	// connect to webSocket API
+	const socket = io('https://coffeebin.appspot.com');
+	window.socketConnection = socket;
+	socket.on('cupDropoffReceipt', data => { console.log("LEL"); this.setState({dropOffNotification: true }); console.log(this.state.dropOffNotification) });
+	//socket.on('cup dropoff', timestamp => { console.log("LEL"); this.sendNotification(null, timestamp)})
+  }
+
+  notify() {
+  	toast("You have succesfully dropped off your cup.");
+  	this.setState({dropOffNotification:false});
+  	console.log(this.state.dropOffNotification);
+  }
+
+  notifyBestFriend() {
+  	toast("Your friend is close to you. Go grab a coffee with her!");
+  }
+ 
 
   render() {
 
@@ -50,7 +75,11 @@ class Cup extends React.Component {
 	      	{beanList}
 	      </div>
 	      <Bottom />
+	      { this.state.dropOffNotification ? this.notify() : null }
+	      <ToastContainer />
+
       </React.Fragment>
+
     );
   }
 }
